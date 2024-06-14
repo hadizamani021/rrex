@@ -2,7 +2,7 @@ use std::io::{self, Write};
 
 use crossterm::{cursor, style, style::Colorize, terminal, ExecutableCommand, QueueableCommand};
 
-use crate::{gui::Showable, objects::Object};
+use crate::{gui::Showable, object::Object};
 
 pub struct Terminal {
     stdout: io::Stdout,

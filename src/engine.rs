@@ -1,4 +1,4 @@
-use crate::{gui::Showable, objects::Object};
+use crate::{gui::Showable, object::Object};
 
 pub struct Engine<'a> {
     gui: &'a mut (dyn Showable + 'a),
