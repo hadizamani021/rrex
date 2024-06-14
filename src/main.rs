@@ -4,7 +4,7 @@ use terminal::Terminal;
 mod corcodile;
 mod engine;
 mod gui;
-mod object;
+mod item;
 mod terminal;
 fn main() {
     let mut terminal = Terminal::new();

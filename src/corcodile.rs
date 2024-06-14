@@ -1,7 +1,7 @@
-use crate::object::Object;
+use crate::item::Item;
 
 pub struct Corcodile<'a> {
-    pub item: Object<'a>,
+    pub item: Item<'a>,
 }
 
 impl Corcodile<'_> {
@@ -12,7 +12,7 @@ impl Corcodile<'_> {
         let start_x = 5;
         let start_y = 0;
         return Self {
-            item: Object {
+            item: Item {
                 xs,
                 ys,
                 representor,

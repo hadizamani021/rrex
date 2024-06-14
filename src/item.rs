@@ -1,11 +1,11 @@
-pub struct Object<'a> {
+pub struct Item<'a> {
     pub start_x: u16,
     pub start_y: u16,
     pub xs: &'a [u16],
     pub ys: &'a [u16],
     pub representor: char,
 }
-impl Object<'_> {
+impl Item<'_> {
     pub fn number_of_points(&self) -> usize {
         return self.xs.len();
     }
