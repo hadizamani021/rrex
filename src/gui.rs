@@ -1,5 +1,5 @@
-use crate::object::Object;
+use crate::corcodile::Corcodile;
 
 pub trait Showable {
-    fn show(&mut self, objects: &Vec<Object>);
+    fn show(&mut self, corcodile: &Corcodile);
 }

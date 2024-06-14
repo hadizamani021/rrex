@@ -1,0 +1,24 @@
+use crate::object::Object;
+
+pub struct Corcodile<'a> {
+    pub item: Object<'a>,
+}
+
+impl Corcodile<'_> {
+    pub fn new() -> Self {
+        let xs = &[6, 7, 6, 7, 4, 4, 4, 4, 5, 5, 5, 5, 3, 4, 4];
+        let ys = &[5, 5, 7, 7, 5, 6, 7, 8, 5, 6, 7, 8, 8, 8, 8];
+        let representor = '%';
+        let start_x = 5;
+        let start_y = 0;
+        return Self {
+            item: Object {
+                xs,
+                ys,
+                representor,
+                start_x,
+                start_y,
+            },
+        };
+    }
+}

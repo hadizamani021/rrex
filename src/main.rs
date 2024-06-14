@@ -1,6 +1,7 @@
 use engine::Engine;
 use terminal::Terminal;
 
+mod corcodile;
 mod engine;
 mod gui;
 mod object;
