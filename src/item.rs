@@ -4,6 +4,7 @@ pub struct Item<'a> {
     pub xs: &'a [u16],
     pub ys: &'a [u16],
     pub representor: char,
+    pub time_of_last_event: u16,
 }
 impl Item<'_> {
     pub fn number_of_points(&self) -> usize {

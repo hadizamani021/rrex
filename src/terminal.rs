@@ -1,8 +1,9 @@
 use std::io::{self, Write};
 
-use crossterm::{cursor, style, style::Colorize, terminal, ExecutableCommand, QueueableCommand};
-
 use crate::{corcodile::Corcodile, gui::Showable};
+use crossterm::style::Stylize;
+use crossterm::terminal::enable_raw_mode;
+use crossterm::{cursor, style, terminal, ExecutableCommand, QueueableCommand};
 
 pub struct Terminal {
     stdout: io::Stdout,
@@ -10,6 +11,7 @@ pub struct Terminal {
 impl Terminal {
     pub fn new() -> Self {
         let stdout = io::stdout();
+        enable_raw_mode().unwrap();
         return Self { stdout };
     }
 }
