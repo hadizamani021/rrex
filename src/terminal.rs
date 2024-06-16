@@ -18,7 +18,7 @@ impl Terminal {
     }
 }
 impl Showable for Terminal {
-    fn show(&mut self, corcodile: &Corcodile, ground: &Ground, cactus: &Cactus) {
+    fn show(&mut self, corcodile: &Corcodile, ground: &Ground, cactuses: &Vec<Cactus>) {
         self.stdout
             .execute(terminal::Clear(terminal::ClearType::All))
             .unwrap();
@@ -48,17 +48,19 @@ impl Showable for Terminal {
                 .unwrap();
         }
         //remove duplicate code
-        let object = &cactus.item;
-        for i in 0..object.number_of_points() {
-            let point = object.get_point(i);
-            self.stdout
-                .queue(cursor::MoveTo(
-                    point.0.try_into().unwrap(),
-                    point.1.try_into().unwrap(),
-                ))
-                .unwrap()
-                .queue(style::PrintStyledContent(object.representor.magenta()))
-                .unwrap();
+        for cactus in cactuses {
+            let object = &cactus.item;
+            for i in 0..object.number_of_points() {
+                let point = object.get_point(i);
+                self.stdout
+                    .queue(cursor::MoveTo(
+                        point.0.try_into().unwrap(),
+                        point.1.try_into().unwrap(),
+                    ))
+                    .unwrap()
+                    .queue(style::PrintStyledContent(object.representor.magenta()))
+                    .unwrap();
+            }
         }
         self.stdout.flush().unwrap();
     }

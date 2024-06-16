@@ -10,24 +10,27 @@ pub struct Engine<'a> {
     gui: &'a mut (dyn Showable + 'a),
     ground: Ground,
     corcodile: Corcodile,
-    cactus: Cactus,
+    cactuses: Vec<Cactus>,
 }
 impl<'a> Engine<'a> {
     pub fn new<T: Showable>(gui: &'a mut T) -> Self {
         let corcodile = Corcodile::new();
         let ground = Ground::new();
-        let cactus = Cactus::new();
+        let mut cactuses = Vec::new();
+        cactuses.push(Cactus::new());
         Self {
             gui,
             corcodile,
             ground,
-            cactus,
+            cactuses,
         }
     }
     pub fn run(&mut self) {
         self.corcodile.update();
-        self.cactus.update();
-        self.gui.show(&self.corcodile, &self.ground, &self.cactus);
+        for cactus in &mut self.cactuses {
+            cactus.update();
+        }
+        self.gui.show(&self.corcodile, &self.ground, &self.cactuses);
     }
     pub fn on_event(&mut self, event: GameEvent) {
         if matches!(event, GameEvent::JumpPlayer) {
