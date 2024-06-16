@@ -1,5 +1,6 @@
 use std::{thread::sleep, time::Duration};
 
+mod cactus;
 mod corcodile;
 mod engine;
 mod ground;
@@ -38,14 +39,14 @@ fn main() {
             Some(engine::GameEvent::JumpPlayer) => {
                 engine.on_event(engine::GameEvent::JumpPlayer);
                 engine.run();
-                sleep(Duration::from_millis(50));
+                sleep(Duration::from_millis(40));
             }
             Some(engine::GameEvent::Exit) => {
                 std::process::exit(1);
             }
             _ => {
                 engine.run();
-                sleep(Duration::from_millis(50));
+                sleep(Duration::from_millis(40));
             }
         }
     }

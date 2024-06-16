@@ -11,6 +11,8 @@ impl Item<'_> {
         return self.xs.len();
     }
     pub fn get_point(&self, index: usize) -> (usize, usize) {
-        (self.start_x + self.xs[index], self.start_y + self.ys[index])
+        let x = self.start_x + self.xs[index];
+        let y = self.start_y + self.ys[index];
+        (x, y)
     }
 }
