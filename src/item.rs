@@ -1,12 +1,12 @@
-pub struct Item<'a> {
+pub struct Item {
     pub start_x: usize,
     pub start_y: usize,
-    pub xs: &'a [usize],
-    pub ys: &'a [usize],
+    pub xs: Vec<usize>,
+    pub ys: Vec<usize>,
     pub representor: char,
     pub time_of_last_event: usize,
 }
-impl Item<'_> {
+impl Item {
     pub fn number_of_points(&self) -> usize {
         return self.xs.len();
     }

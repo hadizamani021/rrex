@@ -8,9 +8,9 @@ pub enum GameEvent {
 }
 pub struct Engine<'a> {
     gui: &'a mut (dyn Showable + 'a),
-    ground: Ground<'a>,
-    corcodile: Corcodile<'a>,
-    cactus: Cactus<'a>,
+    ground: Ground,
+    corcodile: Corcodile,
+    cactus: Cactus,
 }
 impl<'a> Engine<'a> {
     pub fn new<T: Showable>(gui: &'a mut T) -> Self {

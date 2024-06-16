@@ -4,14 +4,14 @@ const FIRST_START_Y: usize = 10;
 const FIRST_START_X: usize = 5;
 const MAX_TIME_OF_JUMP: usize = 6;
 
-pub struct Corcodile<'a> {
-    pub item: Item<'a>,
+pub struct Corcodile {
+    pub item: Item,
     state: MovementState,
 }
-impl Corcodile<'_> {
+impl Corcodile {
     pub fn new() -> Self {
-        let xs = &[6, 7, 6, 7, 4, 4, 4, 4, 5, 5, 5, 5, 3, 4, 4];
-        let ys = &[5, 5, 7, 7, 5, 6, 7, 8, 5, 6, 7, 8, 8, 8, 8];
+        let xs = vec![6, 7, 6, 7, 4, 4, 4, 4, 5, 5, 5, 5, 3, 4, 4];
+        let ys = vec![5, 5, 7, 7, 5, 6, 7, 8, 5, 6, 7, 8, 8, 8, 8];
         let representor = '%';
         return Self {
             state: MovementState::FREE,

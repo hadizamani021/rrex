@@ -3,13 +3,13 @@ use crate::item::Item;
 const FIRST_START_Y: usize = 18;
 const FIRST_START_X: usize = 200;
 
-pub struct Cactus<'a> {
-    pub item: Item<'a>,
+pub struct Cactus {
+    pub item: Item,
 }
-impl Cactus<'_> {
+impl Cactus {
     pub fn new() -> Self {
-        let xs = &[0, 1, 2];
-        let ys = &[0, 0, 0];
+        let xs = vec![0, 1, 2];
+        let ys = vec![0, 0, 0];
         let representor = '@';
         return Self {
             item: Item {
