@@ -1,8 +1,8 @@
 use crate::{item::Item, movement::MovementState};
 
-const FIRST_START_Y: u16 = 10;
-const FIRST_START_X: u16 = 5;
-const MAX_TIME_OF_JUMP: u16 = 6;
+const FIRST_START_Y: usize = 10;
+const FIRST_START_X: usize = 5;
+const MAX_TIME_OF_JUMP: usize = 6;
 
 pub struct Corcodile<'a> {
     pub item: Item<'a>,

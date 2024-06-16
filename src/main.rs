@@ -2,6 +2,7 @@ use std::{thread::sleep, time::Duration};
 
 mod corcodile;
 mod engine;
+mod ground;
 mod gui;
 mod item;
 mod movement;

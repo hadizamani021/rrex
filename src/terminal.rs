@@ -1,5 +1,6 @@
 use std::io::{self, Write};
 
+use crate::ground::Ground;
 use crate::{corcodile::Corcodile, gui::Showable};
 use crossterm::style::Stylize;
 use crossterm::terminal::enable_raw_mode;
@@ -16,7 +17,7 @@ impl Terminal {
     }
 }
 impl Showable for Terminal {
-    fn show(&mut self, corcodile: &Corcodile) {
+    fn show(&mut self, corcodile: &Corcodile, ground: &Ground) {
         self.stdout
             .execute(terminal::Clear(terminal::ClearType::All))
             .unwrap();
@@ -24,7 +25,23 @@ impl Showable for Terminal {
         for i in 0..object.number_of_points() {
             let point = object.get_point(i);
             self.stdout
-                .queue(cursor::MoveTo(point.0, point.1))
+                .queue(cursor::MoveTo(
+                    point.0.try_into().unwrap(),
+                    point.1.try_into().unwrap(),
+                ))
+                .unwrap()
+                .queue(style::PrintStyledContent(object.representor.magenta()))
+                .unwrap();
+        }
+        //remove duplicate code
+        let object = &ground.item;
+        for i in 0..object.number_of_points() {
+            let point = object.get_point(i);
+            self.stdout
+                .queue(cursor::MoveTo(
+                    point.0.try_into().unwrap(),
+                    point.1.try_into().unwrap(),
+                ))
                 .unwrap()
                 .queue(style::PrintStyledContent(object.representor.magenta()))
                 .unwrap();
