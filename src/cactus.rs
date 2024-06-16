@@ -1,7 +1,7 @@
 use crate::item::Item;
 
 const FIRST_START_Y: usize = 18;
-const FIRST_START_X: usize = 200;
+const FIRST_START_X: usize = 100;
 
 pub struct Cactus {
     pub item: Item,
@@ -25,7 +25,10 @@ impl Cactus {
     pub fn update(&mut self) {
         // todo: solve overflow problem
         if self.item.start_x == 0 {
-            self.item.representor = ' ';
+            if self.item.xs.len() > 0 {
+                self.item.xs.remove(0);
+                self.item.ys.remove(0);
+            }
             return;
         }
         self.item.start_x = self.item.start_x - 1;
